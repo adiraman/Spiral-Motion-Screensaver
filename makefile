@@ -15,8 +15,14 @@ OBJECTS = $(patsubst $(SRCDIRS)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 EXECUTABLE = main
 TARGET =$(TARGETDIR)/$(EXECUTABLE)
 RM = rm -f
+MKDIR_P = mkdir -p
 
-all: $(TARGET)
+all: directories $(TARGET)
+
+directories: $(TARGETDIR)
+
+$(TARGETDIR):
+	$(MKDIR_P) $(TARGETDIR)
 
 $(TARGET): $(OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
