@@ -29,6 +29,7 @@ $(TARGET): $(OBJECTS)
 
 $(OBJECTS): $(SOURCES)
 	$(CXX) $(CFLAGS) -c $^
+	$(MKDIR_P) $(BUILDDIR)
 	mv *.o $(BUILDDIR)/
 
 clean:
